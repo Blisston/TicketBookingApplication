@@ -13,12 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/BookController")
 public class BookController extends HttpServlet {
-	private static final long serialVersionUID = 1L;
- 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-	}
 
+	private static final long serialVersionUID = 1L;
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ScreenDAO screenDAO = new ScreenDAO();
 		BookDAO bookDAO = new BookDAO();
@@ -49,10 +46,9 @@ public class BookController extends HttpServlet {
 				for(int i=0;i<seats.size();i++){out.print(seats.get(i)+" ");}
 				
 				out.println("</td></tr><tr><td>Screen No : </td><td>"+ticket.getScreen_no()+"</td></tr>");
-				out.println("<tr><td>Screen No : </td><td>"+ticket.getTime()+"</td></tr>");
+				out.println("<tr><td>Time : </td><td>"+ticket.getTime()+"</td></tr>");
 				out.println("<tr><td>Ticket price :</td><td> "+ticket.getAmount()+"</td></tr></table><br><a href='options.jsp'>Back to home</a><div>");
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

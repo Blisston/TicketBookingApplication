@@ -17,6 +17,7 @@
 			<li><a href="Summary.jsp">Booking Summary</a></li>
 			<li><a href="Screen_Summary.jsp">Screen Summary</a></li>
 			<li><a href="CancelBooking">Cancel booking</a></li>
+			<li><a href="ResetDatabase">Reset Data</a></li>
 		</ul>
 	</center>
 </body>

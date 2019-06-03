@@ -60,7 +60,7 @@ table, th, td {
 	                        }
 	                        	%> 
                		</table> 
-                
+                <p>(c) - Cancelled tickets</p>
                 </div>
        	</div>
    	</div>

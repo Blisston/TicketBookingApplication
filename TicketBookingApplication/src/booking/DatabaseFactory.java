@@ -37,15 +37,15 @@ public class DatabaseFactory {
 	  }
 	  
 	  public ResultSet getBookingId(int id) throws SQLException {
-		  Statement stmt = con.createStatement(); 
-			return stmt.executeQuery("select * from book where booking_id='"+id+"'");
+	    Statement stmt = con.createStatement(); 
+		return stmt.executeQuery("select * from book where booking_id='"+id+"'");
 	  }
 	  
 	  public ResultSet getSeats(String type,String query) throws SQLException {
 		  Statement stmt = con.createStatement(); 
-		  System.out.println("select seat_no from seat where type='"+type+"' and "+query+ "=0");
 		  return stmt.executeQuery("select seat_no from seat where type='"+type+"' and "+query+ "=0");
 	  }
+	  
 	  public void bookTicket(ArrayList<Integer> seat,String query,Book ticket) throws SQLException {
 		  Statement stmt = con.createStatement(); 
 		  String type = "first_class";
@@ -71,9 +71,7 @@ public class DatabaseFactory {
 		 	ps.setString(3, "book");
 		 	ps.executeUpdate();
 	 	     }
-			System.out.println("select earnings from screen where time='"+ticket.getTime()+"' and screen_no="+ticket.getScreen_no() + "");
-
-	 	  	
+		
 			ResultSet earning = stmt.executeQuery("select earnings from screen where time='"+ticket.getTime()+"' and screen_no="+ticket.getScreen_no() + "");
 	 	  	earning.next();
 			total = earning.getInt("earnings");
@@ -91,17 +89,17 @@ public class DatabaseFactory {
 	  public void cancelTicketFromScreen(int noOfSeats,int amount,String type,int screen_no,String time) throws SQLException {
 		  Statement stmt = con.createStatement(); 
 		  ResultSet earning = stmt.executeQuery("select earnings from screen where time='"+time+"' and screen_no="+screen_no + "");
-	 	  	earning.next();
-			int total = earning.getInt("earnings");
-	 	  	total -=amount;
+	 	  earning.next();
+	 	  int total = earning.getInt("earnings");
+	 	  total -=amount;
 	 	  	
-			  ResultSet seats = stmt.executeQuery("select * from screen where time='"+time+"' and screen_no="+screen_no + "");
-				seats.next();
-				int cur = seats.getInt(type);
-		 	  	cur +=noOfSeats;
+		  ResultSet seats = stmt.executeQuery("select * from screen where time='"+time+"' and screen_no="+screen_no + "");
+		  seats.next();
+		  int cur = seats.getInt(type);
+		  cur +=noOfSeats;
 	 	  	
 		  stmt.executeUpdate("update screen set "+type+"="+cur+" where screen_no="+screen_no+" and time='"+time+"'");
-			stmt.executeUpdate("update screen set earnings="+total+" where screen_no="+screen_no+" and time='"+time+"'");
+		  stmt.executeUpdate("update screen set earnings="+total+" where screen_no="+screen_no+" and time='"+time+"'");
 		  
 	  }
 	  

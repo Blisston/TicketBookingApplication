@@ -55,6 +55,6 @@ private void printHTML(HttpServletResponse response, String error) throws IOExce
 	out.println("<label>Enter booking Id :<br>");
 	out.println("<input name='id' type='number'></input><br><br>");
 	out.println("<button type='submit'>Cancel Ticket</button>");
-	out.println("</form></div>");
+	out.println("</form><br><br><a href='options.jsp'>Back to home</a></div>");
 }
 }
